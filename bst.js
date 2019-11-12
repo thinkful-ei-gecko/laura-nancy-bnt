@@ -127,26 +127,82 @@ class BinarySearchTree {
         return this.left._findMin();
     }
 }
+function tree(t){
+    if(!t){
+        return 0;
+    }
+    return tree(t.left) + t.value + tree(t.right)
+}
+
+
+// Write an algorithm to find the height of a binary search tree. 
+// What is the time complexity of your algorithm?
+function findHeight(t) { 
+    // console.log('in find')
+    // console.log('t:', t)
+    //base condition
+    if(!t){
+        return 0;
+    }
+    else {
+        let lheight = findHeight(t.left) //1 null
+        let rheight = findHeight(t.right) // 4 
+        if(lheight > rheight){
+            console.log('lheight',lheight)
+            return (lheight + 1)
+        }
+        else {
+            console.log('rheight',rheight)
+            return (rheight + 1)
+        }
+    }
+}
+
+function isBST(t){
+    //base case
+    if(!t){
+        return ;
+    }
+    if(t == null){
+        return true
+    }
+    if(t.left && t.value < t.left.value) {
+        return false
+    }
+    if(t.right && t.value > t.right.value){
+        return false
+    }
+    //general case
+    if(!isBST(t.left) || !isBST(t.right)){
+        return false
+    } 
+    return true;
+}
+
 
 function main() {
     let bst = new BinarySearchTree()
-    // bst.insert(3, 3)
-    // bst.insert(1, 1)
-    // bst.insert(4, 4)
-    // bst.insert(6, 6)
-    // bst.insert(9, 9)
-    // bst.insert(2, 2)
-    // bst.insert(5, 5)
-    // bst.insert(7, 7)
-    bst.insert('E', 'E')
-    bst.insert('A', 'A')
-    bst.insert('S', 'S')
-    bst.insert('Y', 'Y')
-    bst.insert('Q', 'Q')
-    bst.insert('U', 'U')
-    bst.insert('E', 'E')
-    bst.insert('S', 'S')
+    bst.insert(3, 3)
+    bst.insert(1, 1)
+    bst.insert(4, 4)
+    bst.insert(6, 6)
+    bst.insert(9, 9)
+    bst.insert(2, 2)
+
     console.log(bst)
+    console.log(isBST(bst))
+    // console.log(findHeight(bst))
+
+    //E A S Y Q U E S T I O N
+    // bst.insert('E', 'E')
+    // bst.insert('A', 'A')
+    // bst.insert('S', 'S')
+    // bst.insert('Y', 'Y')
+    // bst.insert('Q', 'Q')
+    // bst.insert('U', 'U')
+    // bst.insert('E', 'E')
+    // bst.insert('S', 'S')
+   
 }
 
 main()
