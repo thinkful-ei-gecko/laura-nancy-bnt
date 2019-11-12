@@ -160,9 +160,6 @@ function findHeight(t) {
 
 function isBST(t){
     //base case
-    if(!t){
-        return ;
-    }
     if(t == null){
         return true
     }
@@ -178,7 +175,11 @@ function isBST(t){
     } 
     return true;
 }
+//
 
+function largestNodes(t) {
+
+}
 
 function main() {
     let bst = new BinarySearchTree()
